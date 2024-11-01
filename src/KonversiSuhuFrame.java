@@ -1,6 +1,8 @@
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 public class KonversiSuhuFrame extends javax.swing.JFrame {
 
     /**
@@ -14,6 +16,25 @@ public class KonversiSuhuFrame extends javax.swing.JFrame {
         bg.add(jRadioButton3);
         bg.add(jRadioButton4);
         jRadioButton1.setSelected(true); // Set default selection jika diinginkan
+        
+                // Tambahkan DocumentListener untuk konversi otomatis
+        txtInputSuhu.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                jButton1ActionPerformed(null);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                jButton1ActionPerformed(null);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                jButton1ActionPerformed(null);
+            }
+        });
+        
     }
 
     // Dari Celsius
