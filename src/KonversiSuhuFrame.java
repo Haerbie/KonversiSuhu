@@ -1,12 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author USER
- */
+import javax.swing.JOptionPane;
 public class KonversiSuhuFrame extends javax.swing.JFrame {
 
     /**
@@ -14,6 +6,14 @@ public class KonversiSuhuFrame extends javax.swing.JFrame {
      */
     public KonversiSuhuFrame() {
         initComponents();
+    }
+
+    private double celsiusToFahrenheit(double celsius) {
+        return celsius * 9/5 + 32;
+    }
+
+    private double celsiusToKelvin(double celsius) {
+        return celsius + 273.15;
     }
 
     /**
@@ -24,22 +24,114 @@ public class KonversiSuhuFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        txtInputSuhu = new javax.swing.JTextField();
+        comboKonversi = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblHasil = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1.setText("Aplikasi Konversi Suhu");
+        jPanel1.add(jLabel1);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        txtInputSuhu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInputSuhuKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 43;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        jPanel2.add(txtInputSuhu, gridBagConstraints);
+
+        comboKonversi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius ke Fahrenheit", "Celsius ke Kelvin", " " }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        jPanel2.add(comboKonversi, gridBagConstraints);
+
+        jButton1.setText("Konversi");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        jPanel2.add(jButton1, gridBagConstraints);
+
+        jLabel2.setText("Masukkan Suhu");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        jPanel2.add(jLabel2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        jPanel2.add(lblHasil, gridBagConstraints);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            double inputSuhu = Double.parseDouble(txtInputSuhu.getText());
+            String pilihanKonversi = (String) comboKonversi.getSelectedItem();
+            System.out.println("Input Suhu: " + inputSuhu);
+            System.out.println("Pilihan Konversi: " + pilihanKonversi);
+            double hasil = 0.0;
+
+            switch (pilihanKonversi) {
+                case "Celsius ke Fahrenheit":
+                    hasil = celsiusToFahrenheit(inputSuhu);
+                    break;
+                case "Celsius ke Kelvin":
+                    hasil = celsiusToKelvin(inputSuhu);
+                    break;
+                // Tambahkan opsi lain jika perlu
+                default:
+                    System.out.println("Pilihan konversi tidak ditemukan");
+                    break;
+            }
+
+            System.out.println("Hasil Konversi: " + hasil);
+            lblHasil.setText("Hasil: " + hasil);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtInputSuhuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputSuhuKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtInputSuhuKeyTyped
 
     /**
      * @param args the command line arguments
@@ -77,5 +169,13 @@ public class KonversiSuhuFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboKonversi;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblHasil;
+    private javax.swing.JTextField txtInputSuhu;
     // End of variables declaration//GEN-END:variables
 }
