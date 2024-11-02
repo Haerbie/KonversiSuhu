@@ -366,18 +366,18 @@ public class KonversiSuhuFrame extends javax.swing.JFrame {
     private void jRadioButton4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton4ItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             comboKonversi.removeAllItems();
-            comboKonversi.addItem("Reamur ke Celsius");
-            comboKonversi.addItem("Reamur ke Fahrenheit");
-            comboKonversi.addItem("Reamur ke Kelvin");
+            comboKonversi.addItem("Kelvin ke Celsius");
+            comboKonversi.addItem("Kelvin ke Fahrenheit");
+            comboKonversi.addItem("Kelvin ke Reamur");
         }
     }//GEN-LAST:event_jRadioButton4ItemStateChanged
 
     private void jRadioButton3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton3ItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             comboKonversi.removeAllItems();
-            comboKonversi.addItem("Kelvin ke Celsius");
-            comboKonversi.addItem("Kelvin ke Fahrenheit");
-            comboKonversi.addItem("Kelvin ke Reamur");
+            comboKonversi.addItem("Reamur ke Celsius");
+            comboKonversi.addItem("Reamur ke Fahrenheit");
+            comboKonversi.addItem("Reamur ke Kelvin");
         }
     }//GEN-LAST:event_jRadioButton3ItemStateChanged
 
