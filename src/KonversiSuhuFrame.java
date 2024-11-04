@@ -17,7 +17,7 @@ public class KonversiSuhuFrame extends javax.swing.JFrame {
         bg.add(jRadioButton4);
         jRadioButton1.setSelected(true); // Set default selection jika diinginkan
         
-                // Tambahkan DocumentListener untuk konversi otomatis
+        // Tambahkan DocumentListener untuk konversi otomatis
         txtInputSuhu.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
